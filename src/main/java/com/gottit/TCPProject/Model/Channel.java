@@ -1,12 +1,12 @@
 package com.gottit.TCPProject.Model;
 
 public class Channel {
-    private Integer channel_id;
+    private Long channel_id;
     private String channel_name;
-    private Integer user_id; //creator of channel
+    private Long user_id; //creator of channel
     private Boolean isPublic;
 
-    public Channel(Integer channel_id, String channel_name, Integer user_id, Boolean isPublic) {
+    public Channel(Long channel_id, String channel_name, Long user_id, Boolean isPublic) {
         this.channel_id = channel_id;
         this.channel_name = channel_name;
         this.user_id = user_id;
@@ -15,11 +15,11 @@ public class Channel {
 
     public Channel(){}
 
-    public Integer getChannel_id() {
+    public Long getChannel_id() {
         return channel_id;
     }
 
-    public void setChannel_id(Integer channel_id) {
+    public void setChannel_id(Long channel_id) {
         this.channel_id = channel_id;
     }
 
@@ -31,11 +31,11 @@ public class Channel {
         this.channel_name = channel_name;
     }
 
-    public Integer getUser_id() {
+    public Long getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(Integer user_id) {
+    public void setUser_id(Long user_id) {
         this.user_id = user_id;
     }
 

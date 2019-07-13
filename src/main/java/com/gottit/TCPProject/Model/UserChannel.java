@@ -1,29 +1,29 @@
 package com.gottit.TCPProject.Model;
 
 public class UserChannel {
-    private Integer user_id;
-    private Integer channel_id;
+    private Long user_id;
+    private Long channel_id;
 
-    public UserChannel(Integer user_id, Integer channel_id) {
+    public UserChannel(Long user_id, Long channel_id) {
         this.user_id = user_id;
         this.channel_id = channel_id;
     }
 
     public UserChannel(){}
 
-    public Integer getUser_id() {
+    public Long getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(Integer user_id) {
+    public void setUser_id(Long user_id) {
         this.user_id = user_id;
     }
 
-    public Integer getChannel_id() {
+    public Long getChannel_id() {
         return channel_id;
     }
 
-    public void setChannel_id(Integer channel_id) {
+    public void setChannel_id(Long channel_id) {
         this.channel_id = channel_id;
     }
 
