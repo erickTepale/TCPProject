@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MessageRepository extends ReactiveCrudRepository<Message, Long> {
+    public Message findByMessage_id(Long message_id);
 }

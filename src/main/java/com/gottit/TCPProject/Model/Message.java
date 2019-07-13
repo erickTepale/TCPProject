@@ -21,7 +21,7 @@ public class Message {
     //shouldnt use this as db inputs datetime automaticaly on insert.
     public Message(Long message_id, Long user_id, String message, String time) {
         this.message_id = message_id;
-        this.user_id = user_id;
+        this.user_id = user_id; //who made message
         this.message = message;
         this.time = time; //set this to null ?
     }
