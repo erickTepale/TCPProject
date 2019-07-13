@@ -9,13 +9,19 @@ import javax.persistence.Table;
 @Table(name = "channel_message")
 public class ChannelMessage {
     @EmbeddedId
-    private ChannelMessagePK ChannelMessagePK;
+    private ChannelMessagePK channelMessagePK; // <- Must start Lowercase!!
+
+    public ChannelMessage(){}
+
+    public ChannelMessage(ChannelMessagePK channelMessagePK) {
+        this.channelMessagePK = channelMessagePK;
+    }
 
     public ChannelMessagePK getChannelMessagePK() {
-        return ChannelMessagePK;
+        return channelMessagePK;
     }
 
     public void setChannelMessagePK(ChannelMessagePK channelMessagePK) {
-        ChannelMessagePK = channelMessagePK;
+        this.channelMessagePK = channelMessagePK;
     }
 }
