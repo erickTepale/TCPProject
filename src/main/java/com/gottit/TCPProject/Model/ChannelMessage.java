@@ -11,6 +11,12 @@ public class ChannelMessage {
     @EmbeddedId
     private ChannelMessagePK ChannelMessagePK;
 
+    public ChannelMessage(){}
+
+    public ChannelMessage(ChannelMessagePK channelMessagePK) {
+        ChannelMessagePK = channelMessagePK;
+    }
+
     public ChannelMessagePK getChannelMessagePK() {
         return ChannelMessagePK;
     }
