@@ -1,19 +1,25 @@
 package com.gottit.TCPProject.Model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "message")
 public class Message {
-    private Integer message_id;
-    private Integer user_id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long message_id;
+    private Long user_id;
     private String message;
     private String time; //datetime data structure
 
-    public Message(Integer message_id, Integer user_id, String message) {
+    public Message(Long message_id, Long user_id, String message) {
         this.message_id = message_id;
         this.user_id = user_id;
         this.message = message;
     }
 
     //shouldnt use this as db inputs datetime automaticaly on insert.
-    public Message(Integer message_id, Integer user_id, String message, String time) {
+    public Message(Long message_id, Long user_id, String message, String time) {
         this.message_id = message_id;
         this.user_id = user_id;
         this.message = message;
@@ -23,19 +29,19 @@ public class Message {
     public Message(){
     }
 
-    public Integer getMessage_id() {
+    public Long getMessage_id() {
         return message_id;
     }
 
-    public void setMessage_id(Integer message_id) {
+    public void setMessage_id(Long message_id) {
         this.message_id = message_id;
     }
 
-    public Integer getUser_id() {
+    public Long getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(Integer user_id) {
+    public void setUser_id(Long user_id) {
         this.user_id = user_id;
     }
 

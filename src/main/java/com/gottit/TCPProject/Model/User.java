@@ -1,11 +1,11 @@
 package com.gottit.TCPProject.Model;
 
 public class User {
-    private Integer user_id;
+    private Long user_id;
     private String user_name;
     private String password;
 
-    public User(Integer user_id, String user_name, String password) {
+    public User(Long user_id, String user_name, String password) {
         this.user_id = user_id;
         this.user_name = user_name;
         this.password = password;
@@ -13,11 +13,11 @@ public class User {
 
     public User(){}
 
-    public Integer getUser_id() {
+    public Long getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(Integer user_id) {
+    public void setUser_id(Long user_id) {
         this.user_id = user_id;
     }
 
