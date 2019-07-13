@@ -11,5 +11,5 @@ import java.util.List;
 public interface ChannelMessageRepository extends CrudRepository<ChannelMessage, ChannelMessagePK> {
     //When querying by composite key you can concatnate calls, ChannelMessagePK.Channel_id
     //https://stackoverflow.com/questions/43865079/spring-jpa-find-by-embeddedid-partially/43882807
-    public List<ChannelMessage> findByChannelMessagePK_Channel_id(int channel_id);
+    public List<ChannelMessage> findAllByChannelMessagePK_Channel_id(Long channel_id);
 }
