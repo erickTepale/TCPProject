@@ -9,15 +9,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class CMService {
     @Autowired
-    ChannelMessageRepository CMrepository;
+    private ChannelMessageRepository CMrepository;
 
     @Autowired
-    MessageRepository MessageRepository;
+    private MessageRepository MessageRepository;
 
     public Iterable<ChannelMessage> findAll(Long channel_id){
         //maybe for each return the messages that belong in the channel?
@@ -41,6 +42,20 @@ public class CMService {
 
         //return the newly created message
         return temp;
+    }
+
+    //get all messages in the channel
+    public Iterable<Message> show(Long channel_id){
+        List<Message> physicalMessages = new ArrayList<>();
+
+        List<Long> fromMessageId =
+                CMrepository.findAllByChannelMessagePK_ChannelID(channel_id)
+                        .stream()
+                        .map(ChannelMessage::getChannelMessagePK)
+                        .map(ChannelMessagePK::getMessage_id)
+                        .collect(Collectors.toList());
+
+        return MessageRepository.findAllById(fromMessageId);
     }
 
 }
