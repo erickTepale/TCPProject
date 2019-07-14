@@ -11,19 +11,19 @@ import javax.persistence.Table;
 public class DirectMessage {
 
     @EmbeddedId
-    private DirectMessagePK pks;
+    private DirectMessagePK directMessagePK;
 
-    public DirectMessage(DirectMessagePK pks) {
-        this.pks = pks;
+    public DirectMessage(DirectMessagePK directMessagePK) {
+        this.directMessagePK = directMessagePK;
     }
 
     public DirectMessage(){}
 
-    public DirectMessagePK getPks() {
-        return pks;
+    public DirectMessagePK getDirectMessagePK() {
+        return directMessagePK;
     }
 
-    public void setPks(DirectMessagePK pks) {
-        this.pks = pks;
+    public void setDirectMessagePK(DirectMessagePK directMessagePK) {
+        this.directMessagePK = directMessagePK;
     }
 }
