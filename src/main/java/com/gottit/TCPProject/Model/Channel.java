@@ -1,10 +1,23 @@
 package com.gottit.TCPProject.Model;
 
+import org.hibernate.annotations.Type;
+import org.springframework.context.annotation.Primary;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Channel {
+    @Id
     private Long channel_id;
+    @Column
     private String channel_name;
+    @Column
+
     private Long user_id; //creator of channel
-    private Boolean isPublic;
+    @Column(name = "public")
+    private Boolean isPublic = true;
 
     public Channel(Long channel_id, String channel_name, Long user_id, Boolean isPublic) {
         this.channel_id = channel_id;
