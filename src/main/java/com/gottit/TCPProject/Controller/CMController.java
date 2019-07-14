@@ -17,7 +17,7 @@ public class CMController {
     @Autowired
     private CMService cmService;
 
-    @PostMapping("/channel/{id}/message")
+    @PostMapping("/channel/{channel_id}/message")
     public ResponseEntity<Message> create(@RequestBody Message message, @PathVariable Long channel_id){
         return new ResponseEntity<>(cmService.create(message, channel_id), HttpStatus.CREATED);
     }

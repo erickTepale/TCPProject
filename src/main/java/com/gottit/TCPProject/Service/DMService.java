@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class DMService {
@@ -18,8 +20,6 @@ public class DMService {
     DirectMessageRepository DMRepo;
     @Autowired
     MessageRepository messageRepo;
-    @Autowired
-    MessageRepository userRepo;
 
     //can get channel
     public Message create(Message message, Long to_id){
@@ -36,16 +36,32 @@ public class DMService {
         return temp;
     }
 
+
+
     // show DM from other user
     // in this case, the other person wrote the message, which they owns the message
     // and the current user called will be the user in the DirectUserPK
-//    public Iterable<Message> show(Long from_id) {
-//        Long loginUserId = 0L;
-//        List<DirectMessage> result = new ArrayList<>();
-//        DMRepo.findAll().iterator().forEachRemaining(
-//                dm -> {if(dm.getPks().getTo_id().equals(loginUserId)) result.add(dm);});
-//        result.stream().filter(directMessage ->
-//
-//
-//    }
+    public Iterable<Message> show(Long from_id, Long to_id) {
+
+        // find all message_id user A created;
+        List<Long> fromMessageId =
+                messageRepo.findAllByUserId(from_id)
+                        .stream()
+                        .map(Message::getMessage_id)
+                        .collect(Collectors.toList());
+
+        // find all message_id user B received,
+        // in these message_ids, find all message_ids that create by user A
+        // those message_ids will be the message user A sent to user B
+        List<Long> resultMessageId =
+                DMRepo.findAllByDirectMessagePK_ToId(to_id)
+                        .stream()
+                        .map(DirectMessage::getDirectMessagePK)
+                        .map(DirectMessagePK::getMessage_id)
+                        .filter(fromMessageId::contains)
+                        .collect(Collectors.toList());
+
+        // get all those message from messageRepo using the filtered message_ids
+        return messageRepo.findAllById(resultMessageId);
+    }
 }
