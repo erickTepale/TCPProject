@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public interface DirectMessageRepository extends CrudRepository<DirectMessage, DirectMessagePK> {
-    List<DirectMessage> findAllByDirectMessagePK_To_id(Long to_id);
+    List<DirectMessage> findAllByDirectMessagePK_ToId(Long to_id);
 
 
 }

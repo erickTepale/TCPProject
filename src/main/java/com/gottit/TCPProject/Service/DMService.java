@@ -45,7 +45,7 @@ public class DMService {
 
         // find all message_id user A created;
         List<Long> fromMessageId =
-                messageRepo.findAllByMessage_user_id(from_id)
+                messageRepo.findAllByUserId(from_id)
                         .stream()
                         .map(Message::getMessage_id)
                         .collect(Collectors.toList());
@@ -54,7 +54,7 @@ public class DMService {
         // in these message_ids, find all message_ids that create by user A
         // those message_ids will be the message user A sent to user B
         List<Long> resultMessageId =
-                DMRepo.findAllByDirectMessagePK_To_id(to_id)
+                DMRepo.findAllByDirectMessagePK_ToId(to_id)
                         .stream()
                         .map(DirectMessage::getDirectMessagePK)
                         .map(DirectMessagePK::getMessage_id)
