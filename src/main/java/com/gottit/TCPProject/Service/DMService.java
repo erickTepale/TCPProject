@@ -20,8 +20,6 @@ public class DMService {
     DirectMessageRepository DMRepo;
     @Autowired
     MessageRepository messageRepo;
-    @Autowired
-    MessageRepository userRepo;
 
     //can get channel
     public Message create(Message message, Long to_id){
@@ -54,7 +52,7 @@ public class DMService {
 
         // find all message_id user B received,
         // in these message_ids, find all message_ids that create by user A
-        // those message_ids will be user A sent to user B
+        // those message_ids will be the message user A sent to user B
         List<Long> resultMessageId =
                 DMRepo.findAllByDirectMessagePK_To_id(to_id)
                         .stream()
