@@ -8,6 +8,9 @@ import com.gottit.TCPProject.Repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 @Service
 public class CMService {
     @Autowired
@@ -23,7 +26,11 @@ public class CMService {
 
     //can get channel
     public Message create(Message message, Long channel_id){
+        //format time
+        SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
         //store the message in table
+        message.setTime(sdf.format(new Date()));
         Message temp = MessageRepository.save(message);
 
         //create primary composite key for ChannelMessage

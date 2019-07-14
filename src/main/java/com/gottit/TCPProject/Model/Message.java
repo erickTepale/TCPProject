@@ -27,6 +27,11 @@ public class Message {
         this.time = time; //set this to null ?
     }
 
+    public Message(Long user_id, String message) {
+        this.userId = user_id;
+        this.message = message;
+    }
+
     public Message(){
     }
 
