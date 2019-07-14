@@ -24,4 +24,11 @@ public class ChannelMessage {
     public void setChannelMessagePK(ChannelMessagePK channelMessagePK) {
         this.channelMessagePK = channelMessagePK;
     }
+
+    @Override
+    public String toString() {
+        return "ChannelMessage{" +
+                "channelMessagePK=" + channelMessagePK.toString() +
+                '}';
+    }
 }

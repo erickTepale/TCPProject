@@ -36,5 +36,11 @@ public class ChannelMessagePK implements Serializable {
         this.message_id = message_id;
     }
 
-
+    @Override
+    public String toString() {
+        return "ChannelMessagePK{" +
+                "channelID=" + channelID +
+                ", message_id=" + message_id +
+                '}';
+    }
 }
