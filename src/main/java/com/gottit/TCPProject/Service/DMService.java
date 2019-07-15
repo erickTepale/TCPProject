@@ -8,9 +8,8 @@ import com.gottit.TCPProject.Repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -23,13 +22,13 @@ public class DMService {
 
     //can get channel
     public Message create(Message message, Long to_id){
-        //store the message in table
-        Message temp = messageRepo.save(message);
 
-        //create primary composite key for ChannelMessage
+        SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        message.setTime(sdf.format(new Date()));
+
+        Message temp = messageRepo.save(message);
         DirectMessagePK pk = new DirectMessagePK(to_id, temp.getMessage_id());
 
-        //store row into ChannelMessage table in database
         DMRepo.save(new DirectMessage(pk));
 
         //return the newly created message
@@ -43,7 +42,7 @@ public class DMService {
     // and the current user called will be the user in the DirectUserPK
     public Iterable<Message> show(Long from_id, Long to_id) {
 
-        // find all message_id user A created;
+        // find all message_id user A created
         List<Long> fromMessageId =
                 messageRepo.findAllByUserId(from_id)
                         .stream()
