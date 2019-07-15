@@ -22,7 +22,7 @@ public class DMController {
         return new ResponseEntity<>(dmService.create(message, to_id), HttpStatus.CREATED);
     }
 
-    @GetMapping("/[from_id]/{to_id}")
+    @GetMapping("/DM/{from_id}/{to_id}")
     public ResponseEntity<Iterable<Message>> showFromTo(@PathVariable Long from_id, @PathVariable Long to_id){
         return new ResponseEntity<>(dmService.show(from_id,to_id), HttpStatus.OK);
     }

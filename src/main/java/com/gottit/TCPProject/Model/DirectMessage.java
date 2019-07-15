@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "direct_messages")
+@Table(name = "direct_message")
 public class DirectMessage {
 
     @EmbeddedId
