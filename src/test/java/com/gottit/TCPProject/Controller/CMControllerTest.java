@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.client.match.MockRestRequestMatchers;
 import org.springframework.test.web.servlet.MockMvc;
@@ -35,7 +36,7 @@ public class CMControllerTest {
     MessageRepository MessageRepository;
 
     @Test
-    public void testCreate() throws Exception{
+    public void testShow() throws Exception{
 //        List<Message> finallist = new ArrayList<>();
 //        finallist.add(new Message(4L, 1L, "timeWorking?", "2019-07-14 15:12:45"));
 //        finallist.add(new Message(8L, 1L, "testing againa?", "2019-07-14 15:03:43"));
@@ -61,6 +62,24 @@ public class CMControllerTest {
 
     }
 
+    @Test
+    public void testCreate() throws Exception{
+        Message message = new Message(1L, 1L,"testMEssage", "asd");
+        BDDMockito
+                .given(MessageRepository.save(message))
+                .willReturn(message);
 
-
+        String expected = message.toString();
+        this.mvc.perform(MockMvcRequestBuilders
+        .post("/channel/1/message")
+//                .param("message_id", "1")
+//                .param("user_id", "1")
+//                .param("message", "testMEssage")
+//                .param("time", "asd")
+        .contentType(MediaType.APPLICATION_JSON)
+        .accept(MediaType.APPLICATION_JSON)
+        .content(expected))
+                .andExpect(MockMvcResultMatchers.status().isCreated())
+                .andExpect(MockMvcResultMatchers.content().string(expected));
+    }
 }
