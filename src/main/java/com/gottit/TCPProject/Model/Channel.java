@@ -13,9 +13,10 @@ public class Channel {
     private Long channel_id;
     @Column
     private String channel_name;
-    @Column
 
+    @Column
     private Long user_id; //creator of channel
+
     @Column(name = "public")
     private Boolean isPublic = true;
 
