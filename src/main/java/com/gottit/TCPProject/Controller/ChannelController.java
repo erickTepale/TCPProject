@@ -41,7 +41,7 @@ public class ChannelController {
     }
 
     @PostMapping("/channelusers")
-    public ResponseEntity<Channel> addUser(@RequestBody UserChannel userChannel){
+    public ResponseEntity<UserChannel> addUser(@RequestBody UserChannel userChannel){
         return new ResponseEntity(userChannelRepository.save(userChannel), HttpStatus.OK);//add users to channel
     }
 
