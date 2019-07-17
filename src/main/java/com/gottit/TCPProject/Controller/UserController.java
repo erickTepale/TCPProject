@@ -20,6 +20,8 @@ public class UserController {
 
         return new ResponseEntity(userRepository.save(user), HttpStatus.OK);
     }
+
+    @CrossOrigin
     @GetMapping("/{user_name}")
     public ResponseEntity<User> show(@PathVariable String user_name){
         return new ResponseEntity(userRepository.findAllByUsername(user_name),HttpStatus.OK);
