@@ -15,9 +15,9 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
 
+    @CrossOrigin
     @PostMapping
     public ResponseEntity<User> create(@RequestBody User user){
-
         return new ResponseEntity(userRepository.save(user), HttpStatus.OK);
     }
 
