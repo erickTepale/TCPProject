@@ -1,4 +1,9 @@
 spring:
+  profiles:
+    active: "production"
+
+---
+spring:
   profiles: production
   datasource:
     driverClassName: com.mysql.jdbc.Driver
