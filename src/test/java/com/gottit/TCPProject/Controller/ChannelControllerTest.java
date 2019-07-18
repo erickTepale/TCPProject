@@ -17,16 +17,13 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import java.util.Optional;
 
-import static org.junit.Assert.*;
 @SpringBootTest
 @AutoConfigureMockMvc
 @RunWith(SpringRunner.class)
@@ -50,7 +47,7 @@ public class ChannelControllerTest {
 
         Channel expectedChannel = new Channel(123L, "testchannel", 234L, true);
 
-        Mockito.when(channelRepository.save(Mockito.any(Channel.class))).thenReturn(expectedChannel);
+        Mockito.when(channelRepository.save(Mockito.any(Channel.class))).thenReturn(inputChannel);
         ResponseEntity<Channel> actualChannel;
         actualChannel = channelController.create(inputChannel);
         Assertions.assertThat(actualChannel.getBody().getUser_id()).isEqualTo(expectedChannel.getUser_id());
@@ -59,8 +56,22 @@ public class ChannelControllerTest {
         Assertions.assertThat(actualChannel.getBody().getPublic()).isEqualTo(expectedChannel.getPublic());
 
     }
-
     @Test
+    public void create1() {
+
+        Channel inputChannel = new Channel(123L, "testchannel", 234L, true);
+
+        Channel expectedChannel = new Channel(3L, "channel", 4L, true);
+
+        Mockito.when(channelRepository.save(Mockito.any(Channel.class))).thenReturn(inputChannel);
+        ResponseEntity<Channel> actualChannel;
+        actualChannel = channelController.create(inputChannel);
+       // Assertions.assertThat(actualChannel.getBody().getUser_id()).isNotEqualTo(expectedChannel.getUser_id());
+        Assertions.assertThat(actualChannel.getBody().getChannel_name()).isNotEqualTo(expectedChannel.getChannel_name());
+        Assertions.assertThat(actualChannel.getBody().getChannel_id()).isNotEqualTo(expectedChannel.getChannel_id());
+    }
+
+        @Test
     public void show() throws Exception {
         Channel inputChannel = new Channel(123L, "testchannel", 234L, true);
 
@@ -78,6 +89,7 @@ public class ChannelControllerTest {
     public void addUser() {
         UserChannelPK userChannelPK=new UserChannelPK(23L,123L);
         UserChannel userChannel=new UserChannel(userChannelPK);
+        UserChannelPK expuserChannelPK=new UserChannelPK(23L,123L);
         UserChannel expectedUser=new UserChannel(userChannelPK);
         Mockito.when(userChannelRepository.save(Mockito.any(UserChannel.class))).thenReturn(expectedUser);
         ResponseEntity<UserChannel> actualUser;
@@ -88,6 +100,9 @@ public class ChannelControllerTest {
 
     @Test
     public void userChannels() {
+        UserChannelPK userChannelPK=new UserChannelPK(23L,123L);
+        UserChannel userChannel=new UserChannel(userChannelPK);
+        ResponseEntity<Channel> actualChannel= channelController.userChannels(123l);
 
     }
 
