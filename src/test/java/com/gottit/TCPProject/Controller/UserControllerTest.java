@@ -56,50 +56,6 @@ public class UserControllerTest {
     User user;
 
 
-//    @Test
-//    public void createid() throws Exception {
-//        User expectedUser = new User(1l, "John", "xyz");
-//        Mockito.when(userRepository.save(Mockito.any(User.class))).thenReturn(ex);
-//        ResponseEntity<User> actualUser = userController.create(user);
-//        //this.mvc.perform(get("/user").accept(MediaType.APPLICATION_JSON_UTF8)).andExpect((ResultMatcher) content().string("{\"user_Id\":\"1l\",\"username\":\"John\",\"password\":\"xyz}"));
-//        //Assert.assertEquals(1l, actualUser.getBody().getUser_id());
-//        Assert.assertEquals(java.util.Optional.of(1l), java.util.Optional.of(actualUser.getBody().getUser_id()));
-//        Assert.assertEquals("John", actualUser.getBody().getUsername());
-//
-//    }
-//}
-//@Test
-//public void createid() throws Exception {
-//    User expectedUser = new User(1l, "John", "xyz");
-//    // ResponseEntity<User> responseEntity = new ResponseEntity<>(expectedUser,HttpStatus.OK);
-//    // mockedresponseEntity
-//    Mockito.when(userRepository.save(any(User.class))).thenReturn(expectedUser);
-//    //  Mockito.when(mockedresponseEntity.getBody()).thenReturn(expectedUser);
-//    ResponseEntity<User> actualUser = userController.create(user);
-//    //this.mvc.perform(get("/user").accept(MediaType.APPLICATION_JSON_UTF8)).andExpect((ResultMatcher) content().string("{\"user_Id\":\"1l\",\"username\":\"John\",\"password\":\"xyz}"));
-//    //Assert.assertEquals(1l, actualUser.getBody().getUser_id());
-//    Assert.assertEquals(java.util.Optional.of(1l), java.util.Optional.of(actualUser.getBody().getUser_id()));
-//    Assert.assertEquals("John", actualUser.getBody().getUsername());
-//
-//}
-
-// @Test
-//     public void toDo()throws Exception{
-//        String content="{\" {\n" +
-//                "      \n" +
-//                "            \"user_Id\": 1234,\n" +
-//                "            \"user_name\":\"xyz\",\n" +
-//                "            \"password\":\"abc\"\n" +
-//                "        \n" +
-//                "}";
-//        this.mockServer.expect(requestTo("/user/user_name"))
-//                .andRespond(withSuccess(content,MediaType.APPLICATION_JSON_UTF8));
-//        ResponseEntity<User> result=this.userController.show("xyz");
-//        assertThat(result).isNotNull();
-//
-//
-//
-// }
     @Test
     public void create(){
         User user = new User(1l, "John", "xyz");
@@ -143,22 +99,5 @@ public class UserControllerTest {
         Assert.assertEquals(userController.show("John").getStatusCode(), OK);
 
     }
-//
-//    @Test
-//    public void show1() throws URISyntaxException, JsonProcessingException {
-//
-//        User user = new User(1l, "John", "xyz");
-//        //User expected = new User(1l, "John", "xyz");
-//        mockServer.expect(ExpectedCount.once(),
-//                requestTo(new URI("http://localhost:8080/user/John")))
-//                .andExpect(method(HttpMethod.GET))
-//                .andRespond(withStatus(HttpStatus.OK)
-//                        .contentType(MediaType.APPLICATION_JSON)
-//                        .body(mapper.writeValueAsString(user))
-//                );
-//        userController.create(user);
-//        ResponseEntity<User> user1 = userController.show("John");
-//        mockServer.verify();
-//        Assert.assertEquals(user1.getBody().getUser_id(), user.getUser_id());
-//    }
+
 }
