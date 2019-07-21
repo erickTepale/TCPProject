@@ -7,13 +7,13 @@ import javax.persistence.Id;
 @Entity
 public class User {
     @Id
-    private Long user_id;
+    private Long userId;
     @Column(name = "user_name")
     private String username;
     private String password;
 
     public User(Long user_id, String username, String password) {
-        this.user_id = user_id;
+        this.userId = user_id;
         this.username = username;
         this.password = password;
     }
@@ -21,11 +21,11 @@ public class User {
     public User(){}
 
     public Long getUser_id() {
-        return user_id;
+        return userId;
     }
 
     public void setUser_id(Long user_id) {
-        this.user_id = user_id;
+        this.userId = user_id;
     }
 
     public String getUsername() {
@@ -47,7 +47,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "user_id=" + user_id +
+                "user_id=" + userId +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 '}';
