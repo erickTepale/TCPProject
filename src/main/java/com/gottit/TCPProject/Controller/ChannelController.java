@@ -59,4 +59,10 @@ public class ChannelController {
         return  new ResponseEntity(channelRepository.findById(channel_id),HttpStatus.OK);
     }
 
+    @CrossOrigin
+    @GetMapping("/getById/{user_id}")
+    public ResponseEntity<Channel> getById(@PathVariable Long user_id){
+        return new ResponseEntity(channelRepository.findChannelByUserId(user_id), HttpStatus.OK);
+    }
+
 }
