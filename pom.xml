@@ -38,8 +38,15 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-websocket -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-websocket</artifactId>
+			<version>5.1.8.RELEASE</version>
+		</dependency>
 
-<!--		<dependency>-->
+
+		<!--		<dependency>-->
 <!--			<groupId>mysql</groupId>-->
 <!--			<artifactId>mysql-connector-java</artifactId>-->
 <!--			<version>8.0.14</version>-->
