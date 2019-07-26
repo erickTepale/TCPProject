@@ -14,13 +14,13 @@ public class DMController {
     @Autowired
     private DMService dmService;
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin
     @PostMapping("/DM/{to_id}")
     public ResponseEntity<Message> create(@RequestBody Message message, @PathVariable Long to_id){
         return new ResponseEntity<>(dmService.create(message, to_id), HttpStatus.CREATED);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin
     @GetMapping("/DM/{from_id}/{to_id}")
     public ResponseEntity<Iterable<Message>> showFromTo(@PathVariable Long from_id, @PathVariable Long to_id){
         return new ResponseEntity<>(dmService.show(from_id,to_id), HttpStatus.OK);

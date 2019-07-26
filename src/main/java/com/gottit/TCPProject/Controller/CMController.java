@@ -17,11 +17,13 @@ public class CMController {
     @Autowired
     private CMService cmService;
 
+    @CrossOrigin
     @PostMapping("/channel/{channel_id}/message")
     public ResponseEntity<Message> create(@RequestBody Message message, @PathVariable Long channel_id){
         return new ResponseEntity<>(cmService.create(message, channel_id), HttpStatus.CREATED);
     }
 
+    @CrossOrigin
     @GetMapping("/channel/{channel_id}")
     public ResponseEntity<Iterable<Message>> show(@PathVariable Long channel_id){
         return new ResponseEntity<>(cmService.show(channel_id), HttpStatus.OK);

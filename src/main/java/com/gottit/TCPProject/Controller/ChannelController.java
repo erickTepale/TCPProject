@@ -53,7 +53,7 @@ public class ChannelController {
         return  new ResponseEntity(userChannelRepository.findAllByUserChannelPK_UserId(user_id),HttpStatus.OK);
     }
 
-    @CrossOrigin(origins = "http://localhost:8100/chatpage")
+    @CrossOrigin
     @GetMapping("/channel/getChannel/{channel_id}")
     public ResponseEntity<Channel> getByChannel(@PathVariable Long channel_id){
         return  new ResponseEntity(channelRepository.findById(channel_id),HttpStatus.OK);
