@@ -26,15 +26,19 @@ public class ChannelController {
     @Autowired
     UserChannelRepository userChannelRepository;
 
+    @CrossOrigin
     @PostMapping
     public ResponseEntity<Channel> create(@RequestBody Channel channel){
         return new ResponseEntity(channelRepository.save( channel), HttpStatus.OK);
     }
+
+    @CrossOrigin
     @GetMapping
     public ResponseEntity<Channel> show(){
         return new ResponseEntity(channelRepository.findAll(), HttpStatus.OK);
     }
 
+    @CrossOrigin
     @GetMapping("/channelsforuser/{userid}")
     public ResponseEntity<Channel> showbyUser(@PathVariable int userid){
         return new ResponseEntity(channelService.getChannelsByUserID(channelRepository.findAll(),userid), HttpStatus.OK);
