@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 public class Channel {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long channel_id;
     @Column
     private String channel_name;
