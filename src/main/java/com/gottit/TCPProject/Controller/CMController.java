@@ -30,8 +30,8 @@ public class CMController extends TextWebSocketHandler {
     }
 
     @CrossOrigin
-    @MessageMapping("/chat/{channel_id}")
-    @SendTo("/channel/{channel_id}")
+    @MessageMapping("/chat/{channel_id}") //url front end sends message to
+    @SendTo("/channel/{channel_id}") //url you want to subscribe to!
     public Message createWithSock(@RequestBody Message message, @DestinationVariable Long channel_id){
         return cmService.create(message, channel_id);
     }
